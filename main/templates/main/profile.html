@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<br></br>
+{% if user.username == "mustafa" %}
+<h1>All User Profiles</h1>
+{% for p in profile %}
+<hr></hr>
+<div>
+    <p>Username: <strong>{{p.user}}</strong></p>
+    <p>First Name: <strong>{{p.name}}</strong></p>
+    <p>Last Name: <strong>{{p.last}}</strong></p>
+    <p>Email: <strong>{{p.email}}</strong></p>
+    
+</div>
+
+{% endfor %}
+<hr></hr>
+{% else %}
+<h1>Profile</h1>
+<hr></hr>
+{% for p in profile %}
+    {% if user.username == p.user %}
+    <div>
+        <p>Username: <strong>{{p.user}}</strong></p>
+        <p>First Name: <strong>{{p.name}}</strong></p>
+        <p>Last Name: <strong>{{p.last}}</strong></p>
+        <p>Email: <strong>{{p.email}}</strong></p>
+        
+    </div>
+    {% endif %}
+{% endfor %}
+
+{% endif %}
+
+
+
+{% endblock %}
